@@ -32,7 +32,7 @@ class Api {
         body,
         headers = {},
     }) => {
-        url = `${this.cleanReq ? this.URL : 'http://autohackers.am:3000/api'}${
+        url = `${this.cleanReq ? this.URL : 'https://autohackers.am:3000/api'}${
             this.URL
         }${url}`;
 
