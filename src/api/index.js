@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from 'axios'
 class Api {
     constructor(baseUrl = '', cleanReq = false) {
-        this.URL = baseUrl;
-        this.cleanReq = cleanReq;
+        this.URL = baseUrl
+        this.cleanReq = cleanReq
     }
 
     get({ url, headers }) {
-        return this.#configureRequest({ url, headers });
+        return this.#configureRequest({ url, headers })
     }
 
     post({ url, body, headers }) {
@@ -15,7 +15,7 @@ class Api {
             body,
             method: 'post',
             headers,
-        });
+        })
     }
     patch({ url, body, headers }) {
         return this.#configureRequest({
@@ -23,7 +23,7 @@ class Api {
             body,
             method: 'patch',
             headers,
-        });
+        })
     }
 
     #configureRequest = async ({
@@ -32,28 +32,27 @@ class Api {
         body,
         headers = {},
     }) => {
-        url = `${this.cleanReq ? this.URL : 'https://autohackers.am:3000/api'}${
-            this.URL
-        }${url}`;
+        url = `${this.cleanReq ? this.URL : 'https://autohackers.am:3000/api'}${this.URL
+            }${url}`
 
         const options = {
             method,
             headers: {
                 'content-type': 'application/json',
-                ...headers,
-            },
-        };
+                ...headers
+            }
+        }
 
         if (body) {
             if (body instanceof FormData) {
-                options.headers['Content-Type'] = 'multipart/form-data';
+                options.headers['Content-Type'] = 'multipart/form-data'
             }
 
-            options.data = body;
+            options.data = body
         }
 
-        return axios(url, options);
+        return axios(url, options)
     };
 }
 
-export default Api;
+export default Api
